@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configs>
+<append xpath="/items">
+
+    <!-- Readd empty jars -->
+    <item name="drinkJarEmpty">
+    	<property name="CustomIcon" value="drinkJarEmpty"/>
+        <property name="HoldType" value="3"/>
+        <property name="Meshfile" value="@:Other/Items/Food/emptyJarPrefab.prefab"/>
+        <property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+        <property name="Material" value="Mglass"/>
+        <property name="Stacknumber" value="125"/>
+        <property name="Weight" value="10"/>
+        <property name="EconomicValue" value="6"/>
+        <property name="CraftingIngredientTime" value="9"/>
+        <property class="Action1">
+            <!-- changed exchange item to collectwater -->
+            <property name="Class" value="CollectWater"/>
+		    <property name="Delay" value="1.0"/>
+		    <property name="Change_item_to" value="drinkJarRiverWater"/>
+		    <property name="Sound_start" value="bucketfill_water"/>
+        </property>
+        <property name="Group" value="Resources"/>
+    </item>
+</append>
+
+<!-- readd gaining empty jars from drink products -->
+<append xpath="/items/item[starts-with(@name,'drink')]/property[@class='Action0']">
+    <property name="Create_item" value="drinkJarEmpty"/>
+</append>
+
+</configs>
